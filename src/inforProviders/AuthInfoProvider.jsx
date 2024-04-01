@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase.config';
 export const AuthenticationData = createContext();
 
@@ -16,7 +16,7 @@ const AuthInfoProvider = ({children}) => {
        return signInWithEmailAndPassword(auth, email, password);
 
     }
-    
+
     //   user log Out
   
       const userLogOut = () =>{
@@ -40,12 +40,21 @@ const AuthInfoProvider = ({children}) => {
 
     };
 
+    // Create New user with Google
+    const gitHubProvider = new GithubAuthProvider();
+    const createUserWithGitHub = () =>{
+        
+        return signInWithPopup(auth, gitHubProvider);
+
+    };
+
      // user profile info update
-     const userInfoUndate = (userName) =>{
+     const userInfoUndate = (userName,userPhotoUrl) =>{
 
         updateProfile(auth.currentUser,{
 
-             displayName : userName
+             displayName : userName,
+             photoURL: userPhotoUrl
              
         }).then(() => {
          // Profile updated!
@@ -77,7 +86,7 @@ const AuthInfoProvider = ({children}) => {
 
   },[user]);
 
-    const authInfo = {navBarIconCliked,setNavBarIconClicked, user,setUser, loading, createNewUser,createUserWithGoogle,userLogIn, userInfoUndate, resetPassword, userLogOut};
+    const authInfo = {navBarIconCliked,setNavBarIconClicked, user,setUser, loading, createNewUser,createUserWithGitHub,createUserWithGoogle,userLogIn, userInfoUndate, resetPassword, userLogOut};
     return (
         <AuthenticationData.Provider value={authInfo}>
               {children}

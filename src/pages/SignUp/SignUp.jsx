@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthenticationData } from '../../inforProviders/AuthInfoProvider';
@@ -11,7 +11,7 @@ const SignUp = () => {
 
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
-    const { setUser, createNewUser, createUserWithGoogle, userInfoUndate } = useContext(AuthenticationData);
+    const { setUser, createNewUser, userInfoUndate } = useContext(AuthenticationData);
 
     // react-toastify
     const notify = (userName) => {
@@ -29,10 +29,12 @@ const SignUp = () => {
 
         const form = event.target;
         const userName = form.userName.value;
+        const userPhotoUrl = form.url.value;
+        console.log(userPhotoUrl);
         const email = form.email.value;
         const password = form.password.value;
         const confirmPasword = form.confirmPassword.value;
-           console.log(userName,email,password,confirmPasword);
+        
         const passWordValidation = /(?=(.*\d){1})(?=(.*[A-Z]){1})(?=(.*[~!@#$%^&*()]){1}).{6,}/.test(password);
 
         //    passwod length is checking
@@ -63,7 +65,7 @@ const SignUp = () => {
                     sendEmailVerification(result.user).then(() => {
 
                     }).catch(error => console.log(error.message));
-                    userInfoUndate(userName);
+                    userInfoUndate(userName,userPhotoUrl);
                     setUser(result.user);
                     form.reset();
                     notify(userName);
@@ -88,25 +90,6 @@ const SignUp = () => {
         }
     }
 
-    // create user with Google
-    const signUpWithGoogle = () => {
-
-        createUserWithGoogle()
-            .then(result => {
-                console.log(result.user);
-                notify(result.user.displayName);
-                setUser(result.user);
-                navigate('/');
-            }).catch(error => {
-
-                console.log(error);
-                toast.error(`${error.message}`, {
-
-                    position: "top-center"
-                })
-            })
-    }
-
     return (
         <div id='register-compo' className='md:m-8 mx-3 my-8'>
                 <ToastContainer/>
@@ -117,6 +100,13 @@ const SignUp = () => {
                     <div className="form-control mb-3">
                         <label htmlFor="userNameFiled">User Name : </label><br />
                         <input type="text" name="userName" id="userNameFiled" placeholder='Write your email' required />
+                    </div>
+
+                          {/* user  photo */}
+                        
+                    <div className="form-control mb-3">
+                        <label htmlFor="photoUrlFiled">User Name : </label><br />
+                        <input type="url" name="url" id="photoUrlFiled" placeholder='Write your photo url' required />
                     </div>
                     <div className="form-control">
                         <label htmlFor="emailField">Email : </label><br />
@@ -147,14 +137,7 @@ const SignUp = () => {
                     <input className='bg-[red] mt-5 text-white fw-bold hover:cursor-pointer' type="submit" value="Sign Up" />
                     <h2>Already have an account?<Link className='text-blue-600 underline font-xl' to={'/login'}> Login</Link></h2>
                 </form>
-
-                <div className='flex items-center justify-center mt-5'>
-                    <hr className=' border-1 w-full border-gray-500' />
-                    <span className='font-bold px-2'>Or</span>
-                    <hr className='border-1 w-full border-gray-500' />
-                </div>
-
-                <button onClick={signUpWithGoogle} className='lg:w-fit md:2/4 w-fultext-white fw-bold mt-3 p-2 rounded flex items-center gap-2 mx-auto hover:cursor-pointer'> <FaGoogle /> Continue with Google</button>
+               
             </div>
         </div>
     );

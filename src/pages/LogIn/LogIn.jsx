@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react';
-import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthenticationData } from '../../inforProviders/AuthInfoProvider';
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,7 +12,7 @@ const LogIn = () => {
      const emailRef = useRef('eamil-ref');
      const location = useLocation();
      let navigate = useNavigate();
-     const {userLogIn,setUser,resetPassword,createUserWithGoogle} = useContext(AuthenticationData);
+     const {userLogIn,setUser,resetPassword,createUserWithGoogle,createUserWithGitHub} = useContext(AuthenticationData);
  
      let from = location.state?.from?.pathname || "/";
 
@@ -26,7 +26,7 @@ const LogIn = () => {
         userLogIn(email,password)
         .then(userCredential =>{
              
-              if(userCredential?.user?.emailVerified){
+              if(userCredential?.user){
                  
                 toast.success(`${userCredential.user.displayName} has logged in successfully.`, {
             
@@ -61,6 +61,22 @@ const LogIn = () => {
     const signUpWithGoogle = () => {
 
         createUserWithGoogle()
+            .then(result => {
+                console.log(result.user);
+                toast.success(`${result.user?.displayName || "User"} has has logged in perfectly.`);
+                setUser(result.user);
+                navigate(from, { replace: true });
+            }).catch(error => {
+
+                console.log(error);
+                toast.error(`${error.message}`)
+            })
+    }
+
+    // handle log In with Github 
+    const handleLogInWithGithub = () => {
+
+        createUserWithGitHub()
             .then(result => {
                 console.log(result.user);
                 toast.success(`${result.user?.displayName || "User"} has has logged in perfectly.`);
@@ -135,7 +151,8 @@ const LogIn = () => {
                     <hr className='border-1 w-full border-gray-500' />
                 </div>
 
-                <button onClick={signUpWithGoogle} className='lg:w-fit md:2/4 w-fultext-white fw-bold mt-3 p-2 rounded flex items-center gap-2 mx-auto hover:cursor-pointer'> <FaGoogle /> Continue with Google</button>
+                <button onClick={signUpWithGoogle} className='lg:w-fit md:2/4 w-full text-white fw-bold mt-3 p-2 rounded flex items-center gap-2 mx-auto hover:cursor-pointer'> <FaGoogle /> Continue with Google</button>
+                <button style={{background:'green'}} onClick={handleLogInWithGithub} className='lg:w-fit md:2/4 w-full text-white fw-bold mt-3 p-2 rounded flex items-center gap-2 mx-auto hover:cursor-pointer'> <FaGithub /> Continue with Github</button>
 
             </div>
         </div>

@@ -40,7 +40,7 @@ input[type='submit']:hover{
        transition: 0.4s;
 }
 
-button{
+#register-compo button{
 
      background-color: #016b6b;
      color: white;
