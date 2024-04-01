@@ -1,3 +1,13 @@
+footer input{
+
+      color: white !important;
+}
+
+footer input::placeholder{
+
+      color:  white;
+      font-weight: 400;
+}
 
 footer ul li a{
 

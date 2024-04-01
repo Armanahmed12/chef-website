@@ -97,23 +97,23 @@ const SignUp = () => {
                 <h2 style={{ textShadow: '2px 2px 1px blue', letterSpacing: '3px' }} className='font-semibold text-3xl font-serif pb-5 text-[#d10096]'>Sign Up</h2>
                 <form onSubmit={handleSignUp}>
 
-                    <div className="form-control mb-3">
+                    <div className="form-element mb-3">
                         <label htmlFor="userNameFiled">User Name : </label><br />
                         <input type="text" name="userName" id="userNameFiled" placeholder='Write your email' required />
                     </div>
 
                           {/* user  photo */}
                         
-                    <div className="form-control mb-3">
-                        <label htmlFor="photoUrlFiled">User Name : </label><br />
+                    <div className="form-element mb-3">
+                        <label htmlFor="photoUrlFiled">User Url : </label><br />
                         <input type="url" name="url" id="photoUrlFiled" placeholder='Write your photo url' required />
                     </div>
-                    <div className="form-control">
+                    <div className="form-element">
                         <label htmlFor="emailField">Email : </label><br />
                         <input type="email" name="email" id="emailField" placeholder='Write your email' required />
                     </div>
 
-                    <div className="form-control mt-3">
+                    <div className="form-element mt-3">
                         <label htmlFor="passwordFiled">Password : </label><br />
                        
                         <div className='password-field'>
@@ -129,7 +129,7 @@ const SignUp = () => {
                         </div>
                     </div>
 
-                    <div className="form-control mt-3">
+                    <div className="form-element mt-3">
                         <label htmlFor="confirmPaswFiled">Confirm Password : </label><br />
                         <input type={open ? 'text' : 'password'} name="confirmPassword" id="confirmPaswFiled" placeholder='Confirm your password' autoComplete='off' required />
                     </div>

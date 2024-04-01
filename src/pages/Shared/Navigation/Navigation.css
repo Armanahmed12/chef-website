@@ -26,6 +26,16 @@
 }
 
 
+
+
+.user-img{
+
+       height: 40px;
+       width: 40px;
+       border-radius: 100%;
+       box-shadow: 0px 0px 9px 4px red;
+}
+
 /* media query css */
 
 @media only screen and (max-width: 768px){

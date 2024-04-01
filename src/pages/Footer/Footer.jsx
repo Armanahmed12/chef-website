@@ -11,7 +11,6 @@ const Footer = () => {
                     <li><a href="#">Private Chef</a></li>
                     <li><a href="#">Catering</a></li>
                     <li><a href="#">Menu</a></li>
-                    <li><a href="#">FAQS</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </div>
@@ -36,9 +35,9 @@ const Footer = () => {
         </div>
         <div>
             <h2 className="font-bold text-2xl mb-3">Subscribe Us</h2>
-            <p className="pb-2 font-semibold mb-3">Please subscribe with your email to get our each and every news when we offer some foods with enough discount.</p>
+            <p className="pb-2 font-semibold mb-3 text-black">Please subscribe with your email to get our each and every news when we offer some foods with enough discount.</p>
             <div className="flex gap-2">
-                <input className="py-2 outline-0 border-2 border-orange-500 rounded px-2 text-orange-500 w-full" type="email" name="" id="" placeholder="Email address"/>
+                <input className="py-2 outline-0 border-2 bg-orange-500 border-orange-500 rounded px-2 w-full" type="email" name="" id="" placeholder="Email address"/>
                     <button
                         className="bg-orange-500 px-2 hover:bg-orange-600 rounded-md text-white block font-bold">Subscribe</button>
             </div>

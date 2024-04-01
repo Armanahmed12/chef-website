@@ -6,14 +6,14 @@ import img1 from '../../../images/img-3.jpg'
 const ClientComment = () => {
     return (
         <div>
-            <h2 style={{ textShadow: '1px 1px 2px red' }} className='text-4xl font-semibold font-serif text-center my-8'>
+            <h2 style={{ textShadow: '1px 1px 2px red' }} className='text-4xl text-black font-semibold font-serif text-center my-8'>
                 Clients comments about us
             </h2>
+
             <div className='text-center my-2 mx-auto'>
                 <p className='font-serif font-semibold text-blue-900'>We pride ourselves on what our happy clients say.</p>
-                <hr className='md:w-3/6 mx-auto mt-3 mb-8 w-4/5' />
             </div>
-          
+                 <hr className='md:w-3/5 w-4/5 mx-auto my-4' />
             <div className='client-section grid grid-cols-1 md:grid-cols-3 gap-3 mx-2 md:mx-8'>
                 <div>
                     <img src={img1} alt="" />

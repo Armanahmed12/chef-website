@@ -12,7 +12,7 @@ const LogIn = () => {
      const emailRef = useRef('eamil-ref');
      const location = useLocation();
      let navigate = useNavigate();
-     const {userLogIn,setUser,resetPassword,createUserWithGoogle,createUserWithGitHub} = useContext(AuthenticationData);
+     const {loading,userLogIn,setUser,resetPassword,createUserWithGoogle,createUserWithGitHub} = useContext(AuthenticationData);
  
      let from = location.state?.from?.pathname || "/";
 
@@ -112,12 +112,12 @@ const LogIn = () => {
                 <h2 style={{textShadow:'2px 2px 1px blue',letterSpacing:'3px'}} className='font-semibold text-3xl font-serif pb-5 text-[#d10096]'>Log in</h2>
                 <form onSubmit={handleUserLogIn}>
                    <ToastContainer/>
-                    <div className="form-control">
+                    <div className="form-element">
                         <label htmlFor="emailField">Email : </label><br />
                         <input type="email" ref={emailRef} name="email" id="emailField" placeholder='Write your email' required/>
                     </div>
                    
-                    <div className="form-control mt-3">
+                    <div className="form-element mt-3">
                         <label htmlFor="passwordFiled">Password : </label><br />
                        
                      <div className='password-field'>

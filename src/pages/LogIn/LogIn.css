@@ -3,6 +3,11 @@ input[type='email']:focus-visible,input[type='text']:focus-visible, [type='text'
     outline: 2px solid #d6c800;
 }
 
+input{
+
+     background-color: white;
+}
+
 .password-field:focus-within{
 
     outline: 2px solid #d6c800;

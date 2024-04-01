@@ -89,7 +89,6 @@ const AuthInfoProvider = ({children}) => {
     return (
         <AuthenticationData.Provider value={authInfo}>
               {children}
-              
         </AuthenticationData.Provider>
     );
 };
