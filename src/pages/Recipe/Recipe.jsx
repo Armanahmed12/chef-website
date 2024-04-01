@@ -1,6 +1,7 @@
 import React from 'react';
 import '../Recipe/Recipe.css'
 import { FcLike } from 'react-icons/fc';
+import { ToastContainer, toast } from 'react-toastify';
 
 // cookingMethod
 // ingredients
@@ -13,6 +14,7 @@ const Recipe = ({ recipe }) => {
 
     return (
         <div id='eachFoodRecipe' className='border-2 border-red-500 p-2 rounded-lg '>
+             <ToastContainer/>
             <div style={{height:'200px'}}>
                 <h2 className='mb-2'>Recipe : {recipeName}</h2>
                 <ul>
@@ -28,11 +30,19 @@ const Recipe = ({ recipe }) => {
                 <p>Cooking Method : {cookingMethod}</p>
                 <p className='flex items-center text-xl  font-semibold'> Rating : {rating} <FcLike className='ml-2' /> </p>
             </div>
-            <button className='w-full mt-8 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-md'>
+            <button onClick={(event)=>{
+                 event.target.setAttribute('disabled','true');
+                 toast.success('This Food-Recipe has been added.',{
+                     
+                      position: 'top-center'
+                 })
+            }} className='w-full mt-8 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-md disabled:bg-opacity-50'>
                 Favorite
             </button>
         </div>
     );
 };
+
+// onClick={(event)=> event.target.setAttribute('disabled','true')}
 
 export default Recipe;

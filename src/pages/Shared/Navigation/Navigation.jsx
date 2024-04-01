@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '../Navigation/Navigation.css';
 import { Link } from 'react-router-dom';
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
+import ActiveNavLink from './ActiveNavLink';
+
 
 const Navigation = () => {
     const [openNavLinks, setOpenNavLinks] = useState(false);
@@ -16,10 +18,10 @@ const Navigation = () => {
             </div>
             <div className={`absolute left-0 ${openNavLinks ? "top-[64px]" : "-top-[100vh]"} md:static w-full text-center duration-1000`}>
                 <ul className='flex flex-col md:flex-row md:items-center justify-end'>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/blog">Blog</Link></li>
-                    <li><Link to="/aboutUs">About us</Link></li>
-                    <li><Link to="/logIn">Login</Link></li>
+                   <li> <ActiveNavLink path={'/'}>Home</ActiveNavLink></li>
+                   <li> <ActiveNavLink path={'/blog'}>Blogs</ActiveNavLink></li>
+                    <li><ActiveNavLink path={'/aboutUs'}>About us</ActiveNavLink></li>
+                    <li><ActiveNavLink path={'/logIn'}>Login</ActiveNavLink></li>
                 </ul>
             </div>
         </nav>
