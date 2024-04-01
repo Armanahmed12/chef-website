@@ -1,0 +1,25 @@
+
+footer ul li a{
+
+    font-weight: 500;
+    padding-bottom: 0.3rem;
+    display: inline-block;
+}
+
+footer h2{
+
+  color: rgb(255, 81, 0);
+  text-shadow: 2px 2px 2px #100e0e3b;
+}
+
+footer ul li:hover{
+
+   background-color: rgb(255, 132, 0);
+   color: white;
+   padding : 0.3rem 0.5rem;
+}
+
+footer ul{
+
+     background-color: #0e000000;
+}

@@ -1,12 +1,11 @@
 import React from 'react';
-import Navigation from '../../Shared/Navigation/Navigation';
 import '../Header/Header.css';
 import chefPhoto from '../../../images/Chef.png'
 
 const Header = () => {
     return (
         <div id='header-container'>
-            <Navigation />
+          
             <div className='flex-row-reverse md:flex justify-center items-center text-center md:text-left text-white py-5 md:py-0'>
                 <img src={chefPhoto} className='h-[356px] w-full md:w-2/6' alt="" />
                 <div className='w-full md:w-2/4 px-6 text-white mt-5 md:mt-0'>

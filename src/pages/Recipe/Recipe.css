@@ -1,0 +1,14 @@
+
+#eachFoodRecipe h2{
+
+      font-size: 1.4rem;
+      font-weight: bolder;
+      color: #0017c9;
+      text-shadow: 1px 0.7px #f500bc;
+}
+#eachFoodRecipe p, ul {
+
+       font-size: 1.2rem;
+       color: black;
+       text-shadow: 0.3px 0.7px #9b4800;
+}

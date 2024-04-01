@@ -5,6 +5,7 @@ import Blog from "../pages/Blog/Blog";
 import LogIn from "../pages/LogIn/LogIn";
 import SignUp from "../pages/SignUp/SignUp";
 import Error from "../pages/ErrorPage/Error";
+import ChefInfo from "../pages/ChefInfo/ChefInfo";
 
 const router = createBrowserRouter([
     {
@@ -15,12 +16,17 @@ const router = createBrowserRouter([
              {
                  path: '/',
                  element: <Home/>,
-             loader : () => fetch('http://localhost:3000/chefs')
+             loader : () => fetch('https://chef-web-server-sigma.vercel.app/chefs')
 
              },
              {
                  path: '/blog',
                  element: <Blog/>
+             },
+             {
+                  path: '/chef/:id',
+                  element: <ChefInfo/>,
+                  loader: ({params}) => fetch(`https://chef-web-server-sigma.vercel.app/chef/${params.id}`)
              },
              {
                  path: '/logIn',
