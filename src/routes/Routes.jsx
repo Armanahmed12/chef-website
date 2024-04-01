@@ -29,6 +29,10 @@ const router = createBrowserRouter([
                   loader: ({params}) => fetch(`https://chef-web-server-sigma.vercel.app/chef/${params.id}`)
              },
              {
+                 path :  '/register',
+                 element : <SignUp/>
+             },
+             {
                  path: '/logIn',
                  element: <LogIn/>
              },
