@@ -2,9 +2,16 @@ import React from 'react';
 import { FcLike } from 'react-icons/fc';
 import { useLoaderData } from 'react-router-dom';
 import Recipe from '../Recipe/Recipe';
+import Error from '../ErrorPage/Error';
 
 const ChefInfo = () => {
     const chefInfo = useLoaderData();
+    const doesChefInfoExist = chefInfo ? true : false;
+    if(!doesChefInfoExist){
+        console.log("NO data");
+         return <Error/>
+    }
+        console.log(doesChefInfoExist);
     const { id, img, description, displayName, numberOfRecipes, likes, yearsOfExperience, recipes } = chefInfo;
     return (
         <div>
