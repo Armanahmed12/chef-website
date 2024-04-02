@@ -1,0 +1,15 @@
+#blogs-container h2 {
+
+       color: rgb(255, 73, 1);
+       font-size: 1.4rem;
+       font-weight: bold;
+        margin: 1rem 0;
+      
+}
+
+#blogs-container p{
+
+     color: black;
+     font-size: 1.1rem;
+     
+}

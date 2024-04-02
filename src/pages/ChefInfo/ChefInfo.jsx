@@ -34,7 +34,7 @@ const ChefInfo = () => {
                 </div>
             </div>
 
-            {/* Recipe cards */}
+                {/* Recipe cards */}
 
             <h2 style={{ textShadow: '1px 1px 2px red' }} className='text-4xl text-black font-semibold font-serif text-center mt-8'>
                 My Recipes
