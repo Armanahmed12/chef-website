@@ -1,9 +1,9 @@
-# React + Vite
+1. this is a website expressed about a restaurant 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2. there is a chefs section where our all chefs are info
 
-Currently, two official plugins are available:
+3. I tried to show all the recipes of each chef to display.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-"# chef-website" 
+4. there are a section of our food service where our clients talked about our service
+
+5. finally, there is a footer  section at the end.

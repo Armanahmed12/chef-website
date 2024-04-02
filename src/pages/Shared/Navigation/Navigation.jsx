@@ -7,10 +7,11 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Navigation = () => {
+
     const [openNavLinks, setOpenNavLinks] = useState(false);
     const [showName, setShowName] = useState(false);
     const { loading, user, userLogOut } = useContext(AuthenticationData);
-
+   
     // handle user log out
     const handleUserLogOut  = () =>{
 
@@ -35,7 +36,7 @@ const Navigation = () => {
                         <RxHamburgerMenu onClick={() => setOpenNavLinks(!openNavLinks)} className='text-2xl font-bold md:hidden block text-white' />
                 }
             </div>
-            <div className={`w-full md:w-none absolute left-0 ${openNavLinks ? "top-[64px]" : "-top-[100vh]"} md:static text-center duration-1000`}>
+            <div onClick={()=>setOpenNavLinks(!openNavLinks)} className={`w-full md:w-none absolute left-0 ${openNavLinks ? "top-[64px]" : "-top-[100vh]"} md:static text-center duration-1000`}>
                 <ul className='flex flex-col md:flex-row md:items-center justify-end py-4 md:py-0'>
                     <li> <ActiveNavLink path={'/'}>Home</ActiveNavLink></li>
                     <li> <ActiveNavLink path={'/blog'}>Blogs</ActiveNavLink></li>
