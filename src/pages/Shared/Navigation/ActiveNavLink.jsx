@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import '../Navigation/ActiveNavLink.css'
 
 const ActiveNavLink = ({path, children}) => {
-    console.log(path, children);
+    
     return (
         <NavLink
             to={`${path}`}

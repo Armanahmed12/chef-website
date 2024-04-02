@@ -8,6 +8,16 @@ input{
      background-color: white;
 }
 
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+    -webkit-text-fill-color: black;
+   
+}
+
 .password-field:focus-within{
 
     outline: 2px solid #d6c800;

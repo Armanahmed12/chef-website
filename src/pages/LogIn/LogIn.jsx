@@ -2,8 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthenticationData } from '../../inforProviders/AuthInfoProvider';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import '../LogIn/LogIn.css'
 
 const LogIn = () => {
@@ -15,9 +14,10 @@ const LogIn = () => {
      const {loading,userLogIn,setUser,resetPassword,createUserWithGoogle,createUserWithGitHub} = useContext(AuthenticationData);
  
      let from = location.state?.from?.pathname || "/";
-
+     console.log(from);
     const handleUserLogIn = (event) =>{
-
+   
+        
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -25,26 +25,16 @@ const LogIn = () => {
 
         userLogIn(email,password)
         .then(userCredential =>{
-             
-              if(userCredential?.user){
                  
-                toast.success(`${userCredential.user.displayName} has logged in successfully.`, {
-            
-                    position: "top-center"
-       
-                 });
                       form.reset();
                       setUser(userCredential.user);
                       navigate(from, { replace: true });
-                      console.log(user);
-              }else{
 
-                toast.error(`Sorry! This email was not verified in the past. So, please check your gamil inbox and confirm the verification of eamil.`, {
-            
-                    position: "top-center"
-       
-                 });
-              }
+                     !(from.includes('chef')) &&  toast.success("Logged In successfully.",{
+
+                        position : 'top-center'
+                   });
+                    
 
         }).catch(error =>{
 
@@ -57,13 +47,14 @@ const LogIn = () => {
 
     }
 
+
     // handle log In with your google account
     const signUpWithGoogle = () => {
 
         createUserWithGoogle()
             .then(result => {
                 console.log(result.user);
-                toast.success(`${result.user?.displayName || "User"} has has logged in perfectly.`);
+                setUser(result.user);
                 setUser(result.user);
                 navigate(from, { replace: true });
             }).catch(error => {
@@ -79,7 +70,7 @@ const LogIn = () => {
         createUserWithGitHub()
             .then(result => {
                 console.log(result.user);
-                toast.success(`${result.user?.displayName || "User"} has has logged in perfectly.`);
+                // toast.success(`${result.user?.displayName || "User"} has has logged in perfectly.`);
                 setUser(result.user);
                 navigate(from, { replace: true });
             }).catch(error => {
@@ -88,7 +79,6 @@ const LogIn = () => {
                 toast.error(`${error.message}`)
             })
     }
-
 
     // Reset your account password with the email address
     const resetUserPassword = () =>{
@@ -108,10 +98,10 @@ const LogIn = () => {
 
     return (
         <div id='register-compo' className='md:m-8 mx-3 my-8'>
+        
             <div style={{ boxShadow: '0px 0px 5px 1px black' }} className='lg:w-2/5 md:w-3/4 mx-auto text-center p-4 rounded-md'>
                 <h2 style={{textShadow:'2px 2px 1px blue',letterSpacing:'3px'}} className='font-semibold text-3xl font-serif pb-5 text-[#d10096]'>Log in</h2>
                 <form onSubmit={handleUserLogIn}>
-                   <ToastContainer/>
                     <div className="form-element">
                         <label htmlFor="emailField">Email : </label><br />
                         <input type="email" ref={emailRef} name="email" id="emailField" placeholder='Write your email' required/>
@@ -128,7 +118,7 @@ const LogIn = () => {
                                  open ?
                                  
                                  <FaEye onClick={()=>setOpen(!open)} className='eye-icon text-red-500 text-3xl' /> 
-                                 
+                                
                                  
                                  :  
                                  

@@ -15,7 +15,7 @@ const Recipe = ({ recipe }) => {
     return (
         <div id='eachFoodRecipe' className='border-2 border-red-500 p-2 rounded-lg '>
              <ToastContainer/>
-            <div style={{height:'200px'}}>
+            <div className='md:h-[180px] h-auto'>
                 <h2 className='mb-2'>Recipe : {recipeName}</h2>
                 <ul>
                     <span>Ingredients : </span>

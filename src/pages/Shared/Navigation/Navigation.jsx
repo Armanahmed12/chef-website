@@ -3,22 +3,31 @@ import '../Navigation/Navigation.css';
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import ActiveNavLink from './ActiveNavLink';
 import { AuthenticationData } from '../../../inforProviders/AuthInfoProvider';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navigation = () => {
     const [openNavLinks, setOpenNavLinks] = useState(false);
     const [showName, setShowName] = useState(false);
-    const { loading, user } = useContext(AuthenticationData);
+    const { loading, user, userLogOut } = useContext(AuthenticationData);
 
-    console.log(user);
-    // showing userName when user hovers over the user photo
-    const showUserName = () => {
+    // handle user log out
+    const handleUserLogOut  = () =>{
 
-        setShowName(true);
-        alert("hello")
+           userLogOut()
+           .then(() => {
+            toast.success("User has logged Out.")
+          }).catch(error => {
+    
+            console.log(error);
+            alert("Logging out problem.")
+    
+          })
     }
+    console.log(user);
     return (
         <nav className='header'>
+       
             <div className='flex flex-grow-1 items-center w-full md:w-0 justify-between md:justify-normal z-20'>
                 <h2 style={{ textShadow: '2px 2px 7px blue' }} className='text-2xl font-bold font-serif'>TasteHub</h2>
                 {
@@ -36,22 +45,27 @@ const Navigation = () => {
                     }
                     {
 
-                        user && user.photoURL ? <div onMouseEnter={() => setShowName(!showName)} className='flex items-center justify-center gap-2 ml-[20px]'>
+                        (user && (user.photoURL)) && <div onMouseEnter={() => setShowName(!showName)} className='flex items-center justify-center gap-2 ml-[20px]'>
 
                             <img className="user-img" src={user?.photoURL} alt="" />
 
                             {
-                                user.displayName && <span className={`text-white font-bold ${showName ? "block" : "hidden"}`}>
+                                user.displayName && <span className={`text-white font-bold ml-2 ${showName ? "block" : "hidden"}`}>
                                     {user.displayName}
                                 </span>
                             }
 
-                        </div> : !(loading) && <li><ActiveNavLink path={'/logIn'}>Login</ActiveNavLink></li>
+                        </div>
+                    }
+                    {
+                        user ? <li onClick={handleUserLogOut} className='mx-0 md:mx-4'><button className='text-white bg-[#6d9200] p-2 rounded-md'> LogOut</button></li> : 
+                        <li><ActiveNavLink path={'/logIn'}>Login</ActiveNavLink></li>
                     }
                    
                 </ul>
                 
             </div>
+
         </nav>
     );
 };

@@ -6,6 +6,7 @@ import LogIn from "../pages/LogIn/LogIn";
 import SignUp from "../pages/SignUp/SignUp";
 import Error from "../pages/ErrorPage/Error";
 import ChefInfo from "../pages/ChefInfo/ChefInfo";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +26,9 @@ const router = createBrowserRouter([
              },
              {
                   path: '/chef/:id',
-                  element: <ChefInfo/>,
+                  element: <ProtectedRoute>
+                    <ChefInfo/>
+                  </ProtectedRoute>,
                   loader: ({params}) => fetch(`https://chef-web-server-sigma.vercel.app/chef/${params.id}`)
              },
              {

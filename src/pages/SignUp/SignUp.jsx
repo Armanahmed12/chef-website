@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthenticationData } from '../../inforProviders/AuthInfoProvider';
 import '../SignUp/SignUp.css'
@@ -13,10 +13,10 @@ const SignUp = () => {
     const [open, setOpen] = useState(false);
     const { setUser, createNewUser, userInfoUndate } = useContext(AuthenticationData);
 
-    // react-toastify
+    // react-toast message
     const notify = (userName) => {
 
-        toast.success(`well done ${userName}! Now, please verify your gmail to complete your sing Up, checking your gmail inbox.`, {
+        toast.success(`well done ${userName}! Registration done successfully.`, {
 
             position: "top-center"
 
@@ -33,21 +33,19 @@ const SignUp = () => {
         console.log(userPhotoUrl);
         const email = form.email.value;
         const password = form.password.value;
-        const confirmPasword = form.confirmPassword.value;
+        const confirmPassword = form.confirmPassword.value
         
-        const passWordValidation = /(?=(.*\d){1})(?=(.*[A-Z]){1})(?=(.*[~!@#$%^&*()]){1}).{6,}/.test(password);
 
-        //    passwod length is checking
+        //  password length is checking
         if (password.length < 6) {
 
-            alert("make biger your length")
             toast.error('Password must be more than 5 characters.');
             return;
             
         }
 
-        // password and comfirm password are being checked for confirming that both are the same psw.
-        if (!(password === confirmPasword)) {
+        // password and confirm password are being checked for confirming that both are the same psw.
+        if (!(password === confirmPassword)) {
 
             toast.error(`${userName} your Password and Confirm-password must be the same.`, {
                 position: "top-center"
@@ -55,10 +53,7 @@ const SignUp = () => {
             return;
         }
 
-        // password's characters validation and creating a user with password and eamil.
-
-        if (passWordValidation) {
-
+        //   Create new user
             createNewUser(email, password)
                 .then(result => {
 
@@ -80,19 +75,11 @@ const SignUp = () => {
 
                 })
 
-        } else {
-
-            toast.error(`${userName} Your password must contain at least one uppercase letter, one numeral number and one special character.`, {
-
-                position: "top-center"
-
-            });
-        }
-    }
+        } 
 
     return (
         <div id='register-compo' className='md:m-8 mx-3 my-8'>
-                <ToastContainer/>
+              
             <div style={{ boxShadow: '0px 0px 5px 1px black' }} className='lg:w-2/5 md:w-3/4 mx-auto text-center p-4 rounded-md'>
                 <h2 style={{ textShadow: '2px 2px 1px blue', letterSpacing: '3px' }} className='font-semibold text-3xl font-serif pb-5 text-[#d10096]'>Sign Up</h2>
                 <form onSubmit={handleSignUp}>
@@ -106,7 +93,7 @@ const SignUp = () => {
                         
                     <div className="form-element mb-3">
                         <label htmlFor="photoUrlFiled">User Url : </label><br />
-                        <input type="url" name="url" id="photoUrlFiled" placeholder='Write your photo url' required />
+                        <input type="url" name="url" id="photoUrlFiled" placeholder='Write your photo url'/>
                     </div>
                     <div className="form-element">
                         <label htmlFor="emailField">Email : </label><br />

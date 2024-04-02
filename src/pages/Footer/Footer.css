@@ -12,8 +12,15 @@ footer input::placeholder{
 footer ul li a{
 
     font-weight: 500;
-    padding-bottom: 0.3rem;
     display: inline-block;
+
+}
+
+footer ul li{
+
+      padding: 0.3rem 0;
+      display: block;
+      
 }
 
 footer h2{
@@ -26,10 +33,24 @@ footer ul li:hover{
 
    background-color: rgb(255, 132, 0);
    color: white;
-   padding : 0.3rem 0.5rem;
+  
 }
 
 footer ul{
 
      background-color: #0e000000;
+}
+
+@media only screen and (max-width: 768px){
+      
+       footer ul li,a {
+
+            padding: 0;
+           
+       }
+       footer ul li{
+
+            padding: 0.3rem 0;
+            display: block;
+      }
 }
