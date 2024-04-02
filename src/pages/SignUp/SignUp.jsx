@@ -39,7 +39,9 @@ const SignUp = () => {
         //  password length is checking
         if (password.length < 6) {
 
-            toast.error('Password must be more than 5 characters.');
+            toast.error('Password must be more than 5 characters.',{
+                position: 'top-center'
+            });
             return;
             
         }

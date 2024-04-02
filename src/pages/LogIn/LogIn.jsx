@@ -60,7 +60,10 @@ const LogIn = () => {
             }).catch(error => {
 
                 console.log(error);
-                toast.error(`${error.message}`)
+                toast.error(`${error.message}`,{
+
+                     position: 'top-center'
+                })
             })
     }
 
@@ -70,13 +73,15 @@ const LogIn = () => {
         createUserWithGitHub()
             .then(result => {
                 console.log(result.user);
-                // toast.success(`${result.user?.displayName || "User"} has has logged in perfectly.`);
                 setUser(result.user);
                 navigate(from, { replace: true });
             }).catch(error => {
 
                 console.log(error);
-                toast.error(`${error.message}`)
+                toast.error(`${error.message}`,{
+
+                     position: 'top-center'
+                })
             })
     }
 
@@ -88,11 +93,23 @@ const LogIn = () => {
              
                 resetPassword(email)
                 .then(()=>{
-                    toast.success("We have sent you a email to change your password.")
+                    toast.success("We have sent you a email to change your password.",{
+                        position: 'top-center'
+                    })
                 }).catch((error)=>{
                        
-                       toast.error(`${error.message}`);
+                       toast.error(`${error.message}`,{
+
+                           position: 'top-center'
+                       });
                 })
+          }else{
+            {
+                toast.error("Write your email first.", {
+   
+                     position : 'top-center'
+                })
+             }
           }
     }
 
@@ -128,7 +145,7 @@ const LogIn = () => {
                             }
 
                 </div>
-                        <h2 onClick={resetUserPassword} className='text-base text-right underline font-semibold text-blue-700 hover:cursor-pointer'>Forgot passwod?</h2>
+                        <h2 onClick={resetUserPassword} className='text-base text-right underline font-semibold text-blue-700 hover:cursor-pointer'>Forgot password?</h2>
                     </div>  
 
                     <input className='bg-[red] mt-5 text-white fw-bold hover:cursor-pointer' type="submit" value="Log in" />

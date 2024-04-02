@@ -17,7 +17,9 @@ const Navigation = () => {
 
            userLogOut()
            .then(() => {
-            toast.success("User has logged Out.")
+            toast.success("User has logged Out.",{
+                position: 'top-center'
+            })
           }).catch(error => {
     
             console.log(error);
